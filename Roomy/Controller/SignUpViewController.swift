@@ -26,28 +26,23 @@ class SignUpViewController: UIViewController {
             displayAlert("Error in form","Please enter your user name, email and passworld")
         }else{
             NetworkManger.shared.registerNewUserRequest(username: userNameTextFeild.text!, email: userEmailTextField.text!, password: userPasswordTextField.text!) { (error, success) in
-            if success == true{
-                self.performSegue(withIdentifier: "goTohomePageFromSignup", sender: self)
-            }else{
-                print(error!)
+                if success == true{
+                    self.performSegue(withIdentifier: "goTohomePageFromSignup", sender: self)
+                }else{
+                    print(error!)
+                }
             }
-            }
-           
-            
         }
-        
-        
-        
-        
     }
     //MARK:- performing seque
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let HomeViewController = segue.destination as? HomeViewController {
+        if segue.destination is HomeViewController {
             
         }
     }
     
 }
+
 extension SignUpViewController{
     //MARK:- Helping Methods methods
     //Alert method

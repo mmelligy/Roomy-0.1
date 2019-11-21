@@ -12,10 +12,9 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
+    
     let userToken = getUserToken()!
-    var roomesArray = [GettingRoomsModel]()
-    
-    
+    var roomesArray = [RoomsModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +28,10 @@ class HomeViewController: UIViewController {
                 print(error!)
             }
         }
-        
-        
-        
-        
-        
     }
     
 }
+
 extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
     //MARK: - tableview Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,9 +46,9 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         cell?.roomprice.text = roomesArray[indexPath.row].price ?? ""
         return cell!
     }
+    
     //MARK:- tableview Deleget Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }

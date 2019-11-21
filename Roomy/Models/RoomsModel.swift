@@ -9,32 +9,19 @@
 import Foundation
 import ObjectMapper
 
-//struct GettingRoomModel : Codable {
-//    let gettingRooms : [GettingRooms]?
-//    enum CodingKeys: String, CodingKey {
-//        case gettingRooms = "GettingRooms"
-//    }
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        gettingRooms = try values.decodeIfPresent([GettingRooms].self, forKey: .gettingRooms)
-//        
-//    }
-//    
-//}
-
-class GettingRoomsArrayModel: Mappable{
-    var arrays : [GettingRoomsModel]?
-
+class oomsArrayModel: Mappable{
+    var arrays : [RoomsModel]?
+    
     required init?(map: Map) {
-
+        
     }
     func mapping(map: Map) {
         arrays <- map["fakeKey"]
     }
 }
 
-class GettingRoomsModel : Mappable {
-        
+class RoomsModel : Mappable {
+    
     var createdAt : String?
     var descriptionField : String?
     var id : Int?

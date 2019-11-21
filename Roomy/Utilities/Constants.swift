@@ -30,7 +30,7 @@ let URL_ROOMS = "\(BASE_URL)/rooms"
 //Mark:- saveing usertoken to userdefaults
 let defaults = UserDefaults.standard
 struct KeysForUserDefaults {
-   static let userToken = "userToken"
+    static let userToken = "userToken"
 }
 func saveUserTokenToUserDefaults(userToken : String) {
     defaults.set(userToken, forKey: KeysForUserDefaults.userToken)

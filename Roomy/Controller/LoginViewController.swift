@@ -11,15 +11,15 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userEmailTextField: UnderlineTextField!
-    
     @IBOutlet weak var userPasswordTextField: UnderlineTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
+    
     @IBAction func forgetPasswordButtonPressed(_ sender: Any) {
+        
     }
     
     @IBAction func signinButtonPressed(_ sender: Any) {
@@ -33,21 +33,16 @@ class LoginViewController: UIViewController {
                     print(error!)
                 }
             }
-            
-            
-            
-            
         }
     }
+    
     //MARK:- performing seque
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goTohomePageFromLogin"{
-            
         }
-    }
-    
-    
+    }  
 }
+
 extension LoginViewController{
     //MARK:- Helping Methods methods
     //Alert method
