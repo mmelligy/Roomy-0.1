@@ -31,8 +31,6 @@ class RoomsModel : Mappable {
     var title : String?
     var updatedAt : String?
     
-    
-    
     required init?(map: Map){
         
     }
