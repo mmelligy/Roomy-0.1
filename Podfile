@@ -7,7 +7,7 @@ target 'Roomy' do
 
   # Pods for Roomy
   pod 'Alamofire'
-  pod 'AlamofireObjectMapper', '~> 5.2'
+  pod 'ObjectMapper', '~> 3.4'
   pod 'SwiftyJSON'
 
   target 'RoomyTests' do
