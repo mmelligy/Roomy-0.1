@@ -17,7 +17,6 @@ class NetworkManger{
     static let shared = NetworkManger()
     
     private init() {
-        
     }
     
     //MARK:- Login Request
@@ -27,7 +26,7 @@ class NetworkManger{
             case .success(let value):
                 let json = JSON(value)
                 if let userToken = json["auth_token"].string{
-                    saveUserTokenToUserDefaults(userToken: userToken)
+                    keychainKeys.saveUserTokenToKeyChain(userToken: userToken)
                     completion(nil,true)
                 }
             case .failure(let error):
@@ -36,8 +35,6 @@ class NetworkManger{
             }
         }
     }
-    
-    
     
     //MARK:- Sign Up Request
     func registerNewUserRequest(username: String, email: String, password: String,completion: @escaping(_ error: Error? ,_ success:  Bool)-> Void) {
@@ -46,26 +43,21 @@ class NetworkManger{
             case .success(let value):
                 let json = JSON(value)
                 if let userToken = json["auth_token"].string{
-                    saveUserTokenToUserDefaults(userToken: userToken)
+                    keychainKeys.saveUserTokenToKeyChain(userToken: userToken)
                     completion(nil,true)
                 }
             case .failure(let error):
                 print(error)
                 completion(error,false)
             }
-            
         }
-        
-        
     }
     
     
     //MARK:- Getting all rooms Request
     func gettingRoomsRequest(userToken : String,completion: @escaping(_ error: Error? ,_ success:  Bool, _ getDailyVisits:[RoomsModel]?)-> Void)  {
-        
         Alamofire.request(NetworkRouter.AuthenticationRouter.gettingRooms(userToken: userToken)).validate(statusCode: 200..<450).responseJSON(completionHandler: {
             response in
-            print(response)
             switch (response.result) {
             case .success(let responseString1):
                 let json: [String: Any] = [
@@ -75,22 +67,15 @@ class NetworkManger{
                     let rooms = gettingRoomsResponse.arrays else {
                         return
                 }
-                
                 completion(nil,true,rooms)
                 
             case .failure(let error):
                 print (error)
                 completion(error,false,nil)
-                
             }
         })
-        
-        
-        
     }
     
     //MARK:- Add Rooms Request
-    
-    
     
 }

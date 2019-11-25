@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 //https://roomy-application.herokuapp.com/auth/login
 //https://roomy-application.herokuapp.com/signup
@@ -25,21 +26,20 @@ struct Utilities {
     static let URL_ROOMS = BASE_URL + "/rooms"
 }
 
-
-//Mark:- saveing usertoken to userdefaults
-let defaults = UserDefaults.standard
-struct KeysForUserDefaults {
-    static let userToken = "userToken"
-}
-func saveUserTokenToUserDefaults(userToken : String) {
-    defaults.set(userToken, forKey: KeysForUserDefaults.userToken)
-    defaults.synchronize()
-}
-func getUserToken() ->String?{
-    let userToken = defaults.object(forKey: KeysForUserDefaults.userToken) as? String
-    if userToken != nil {
-        return userToken
-    }else {
-        return "don't have userToken"
+struct keychainKeys {
+    //Mark:- saveing usertoken in keychain
+    static let keychain = KeychainSwift(keyPrefix: "userToken_")
+    
+    static func saveUserTokenToKeyChain(userToken : String) {
+        keychain.set(userToken, forKey: "userToken")
+    }
+    static func getUserToken() ->String?{
+        let userToken = keychain.get("userToken")
+        if userToken != nil {
+            return userToken
+        }else {
+            return "don't have userToken"
+        }
     }
 }
+

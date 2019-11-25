@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (4.9.1)
+  - KeychainSwift (18.0.0)
   - ObjectMapper (3.5.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - KeychainSwift (~> 18.0)
   - ObjectMapper (~> 3.4)
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KeychainSwift
     - ObjectMapper
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  KeychainSwift: c46e1438d121e47459fb304ac88c5e058a2a91ed
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 47bc2a791720f29a68fc430fd6e84dd1958b88fb
+PODFILE CHECKSUM: 4cf25f50e690a2a387c525af75d8a666d27562ad
 
 COCOAPODS: 1.8.4

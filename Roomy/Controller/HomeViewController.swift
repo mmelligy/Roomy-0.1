@@ -13,13 +13,12 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
     
-    let userToken = getUserToken()!
     var roomesArray = [RoomsModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("usertoken in home page \(userToken)")
         
+        guard let userToken = keychainKeys.getUserToken() else{return}
         NetworkManger.shared.gettingRoomsRequest(userToken: userToken){ (error, success,resevidRooms)  in
             if success == true{
                 self.roomesArray = resevidRooms!
