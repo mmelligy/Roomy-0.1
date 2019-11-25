@@ -20,11 +20,11 @@ class NetworkRouter{
             let url:URL = {
                 switch self {
                 case .login:
-                    return URL(string: URL_LOGIN)!
+                    return URL(string: Utilities.URL_LOGIN)!
                 case .signup:
-                    return URL(string: URL_SIGNUP)!
+                    return URL(string: Utilities.URL_SIGNUP)!
                 case .gettingRooms:
-                    return URL(string: URL_ROOMS)!
+                    return URL(string: Utilities.URL_ROOMS)!
                 }
             }()
             

@@ -12,6 +12,7 @@ import ObjectMapper
 import SwiftyJSON
 
 
+
 class NetworkManger{
     static let shared = NetworkManger()
     
@@ -60,39 +61,36 @@ class NetworkManger{
     
     
     //MARK:- Getting all rooms Request
-       func gettingRoomsRequest(userToken : String,completion: @escaping(_ error: Error? ,_ success:  Bool, _ getDailyVisits:[RoomsModel]?)-> Void)  {
-    
-           Alamofire.request(NetworkRouter.AuthenticationRouter.gettingRooms(userToken: userToken)).validate(statusCode: 200..<450).responseJSON(completionHandler: {
-               response in
-               print(response)
-               switch (response.result) {
-               case .success(let responseString1):
-                   let json: [String: Any] = [
-                       "fakeKey": responseString1
-                   ]
-                   guard let gettingRoomsResponse = oomsArrayModel(JSON: json),
-                       let rooms = gettingRoomsResponse.arrays else {
-                       return
-                   }
-    
-                   completion(nil,true,rooms)
-    
-               case .failure(let error):
-                   print (error)
-                   completion(error,false,nil)
-    
-               }
-           })
-    
-    
-    
-       }
-    
-    //MARK:- Add Rooms Request
-    func CreatingRoomsRequest(){
+    func gettingRoomsRequest(userToken : String,completion: @escaping(_ error: Error? ,_ success:  Bool, _ getDailyVisits:[RoomsModel]?)-> Void)  {
+        
+        Alamofire.request(NetworkRouter.AuthenticationRouter.gettingRooms(userToken: userToken)).validate(statusCode: 200..<450).responseJSON(completionHandler: {
+            response in
+            print(response)
+            switch (response.result) {
+            case .success(let responseString1):
+                let json: [String: Any] = [
+                    "fakeKey": responseString1
+                ]
+                guard let gettingRoomsResponse = oomsArrayModel(JSON: json),
+                    let rooms = gettingRoomsResponse.arrays else {
+                        return
+                }
+                
+                completion(nil,true,rooms)
+                
+            case .failure(let error):
+                print (error)
+                completion(error,false,nil)
+                
+            }
+        })
+        
         
         
     }
+    
+    //MARK:- Add Rooms Request
+    
     
     
 }

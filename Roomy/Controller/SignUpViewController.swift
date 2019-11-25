@@ -22,15 +22,24 @@ class SignUpViewController: UIViewController {
     }
     //MARK:- Add New User
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        if userNameTextFeild.text == "" || userEmailTextField.text == "" || userPasswordTextField.text == "" {
-            displayAlert("Error in form","Please enter your user name, email and passworld")
-        }else{
-            NetworkManger.shared.registerNewUserRequest(username: userNameTextFeild.text!, email: userEmailTextField.text!, password: userPasswordTextField.text!) { (error, success) in
-                if success == true{
-                    self.performSegue(withIdentifier: "goTohomePageFromSignup", sender: self)
-                }else{
-                    print(error!)
-                }
+        
+        guard let username = userNameTextFeild.text , !username.isEmpty else {
+            displayAlert("Error in form","Please enter your  user name")
+            return}
+        guard let email = userEmailTextField.text , !email.isEmpty else {
+            displayAlert("Error in form","Please enter your email ")
+            return}
+        guard let password = userPasswordTextField.text , !password.isEmpty else {
+            displayAlert("Error in form","Please enter your  passworld")
+            return}
+        
+        
+        NetworkManger.shared.registerNewUserRequest(username: username, email: email, password: password) { (error, success) in
+            if success == true{
+                self.performSegue(withIdentifier: "goTohomePageFromSignup", sender: self)
+            }else{
+                print(error!)
+                
             }
         }
     }

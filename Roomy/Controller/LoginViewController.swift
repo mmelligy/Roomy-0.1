@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func forgetPasswordButtonPressed(_ sender: Any) {
@@ -23,17 +22,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signinButtonPressed(_ sender: Any) {
-        if userEmailTextField.text == "" || userPasswordTextField.text == "" {
-            displayAlert("Error in form","Please enter your email and passworld")
-        }else{
-            NetworkManger.shared.loginRequest(email: userEmailTextField.text! , password: userPasswordTextField.text!) { (error, success) in
-                if success == true{
-                    self.performSegue(withIdentifier: "goTohomePageFromLogin", sender: self)
-                }else{
-                    print(error!)
-                }
+        guard let email = userEmailTextField.text , !email.isEmpty else {
+            displayAlert("Error in form","Please enter your email ")
+            return}
+        guard let password = userPasswordTextField.text , !password.isEmpty else {
+            displayAlert("Error in form","Please enter your  passworld")
+            return}
+        
+        NetworkManger.shared.loginRequest(email: email, password: password) { (error, success) in
+            if success == true{
+                self.performSegue(withIdentifier: "goTohomePageFromLogin", sender: self)
+            }else{
+                print(error!)
             }
         }
+        
     }
     
     //MARK:- performing seque
@@ -45,7 +48,6 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController{
     //MARK:- Helping Methods methods
-    //Alert method
     func displayAlert(_ title : String,_ message : String ){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { (action) in

@@ -39,7 +39,6 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(roomesArray.count)
         let cell = tableView.dequeueReusableCell(withIdentifier: "HotelRoomCell") as? HotelRoomCell
         cell?.roomTitle.text = roomesArray[indexPath.row].title ?? ""
         cell?.roomPlace.text = roomesArray[indexPath.row].place ?? ""
