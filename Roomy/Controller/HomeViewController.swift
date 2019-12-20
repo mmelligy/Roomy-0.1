@@ -8,25 +8,36 @@
 
 import UIKit
 
+protocol HomeView : AnyObject {
+    func reloadData()
+    
+}
 
-class HomeViewController: UIViewController {
+
+
+class HomeViewController: UIViewController, HomeView {
+    
+    var presenter: HomePresenter!
     
     @IBOutlet weak var table: UITableView!
     
-    var roomesArray = [RoomsModel]()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let userToken = keychainKeys.getUserToken() else{return}
-        NetworkManger.shared.gettingRoomsRequest(userToken: userToken){ (error, success,resevidRooms)  in
-            if success == true{
-                self.roomesArray = resevidRooms!
-                self.table.reloadData()
-            }else{
-                print(error!)
-            }
+        presenter = HomePresenterImplementation()
+        presenter.view = self
+        
+        presenter.getRoomsRequest(){(error, success) in
+            
         }
+        
+    }
+    func reloadData() {
+        self.table.reloadData()
     }
     
 }
@@ -34,14 +45,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
     //MARK: - tableview Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return roomesArray.count
+        return presenter.presenterGetNumberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HotelRoomCell") as? HotelRoomCell
-        cell?.roomTitle.text = roomesArray[indexPath.row].title ?? ""
-        cell?.roomPlace.text = roomesArray[indexPath.row].place ?? ""
-        cell?.roomprice.text = roomesArray[indexPath.row].price ?? ""
+        let room = presenter.presenterGetitemAtindexPath(indexPath: indexPath.row)
+        cell?.roomTitle.text = room.title ?? ""
+        cell?.roomPlace.text = room.place ?? ""
+        cell?.roomprice.text = room.price ?? ""
+        
         return cell!
     }
     

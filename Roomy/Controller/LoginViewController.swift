@@ -8,13 +8,29 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginView : AnyObject {
+    var presenter : LoginPresenter! {get set}
+    func navigateTo()
     
+}
+
+class LoginViewController: UIViewController, LoginView {
+  
+    func navigateTo() {
+        self.performSegue(withIdentifier: "goTohomePageFromLogin", sender: self)
+    }
+   
     @IBOutlet weak var userEmailTextField: UnderlineTextField!
     @IBOutlet weak var userPasswordTextField: UnderlineTextField!
     
+    var presenter : LoginPresenter!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = LoginPresenterImplementation()
+        presenter.view = self
+        
     }
     
     @IBAction func forgetPasswordButtonPressed(_ sender: Any) {
@@ -29,13 +45,9 @@ class LoginViewController: UIViewController {
             displayAlert("Error in form","Please enter your  passworld")
             return}
         
-        NetworkManger.shared.loginRequest(email: email, password: password) { (error, success) in
-            if success == true{
-                self.performSegue(withIdentifier: "goTohomePageFromLogin", sender: self)
-            }else{
-                print(error!)
-            }
-        }
+         presenter.networkRequest(email: email , password: password)
+        
+        
         
     }
     

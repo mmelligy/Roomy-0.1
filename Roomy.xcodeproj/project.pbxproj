@@ -14,6 +14,8 @@
 		680C623C2382F80900ABC610 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C62372382F80900ABC610 /* HomeViewController.swift */; };
 		680C623D2382F80900ABC610 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C62382382F80900ABC610 /* LoginViewController.swift */; };
 		680C623E2382F80900ABC610 /* HotelRoomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C62392382F80900ABC610 /* HotelRoomViewCell.swift */; };
+		68257A7E23ACEAC7002DAB5D /* LoginPresenterImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68257A7D23ACEAC7002DAB5D /* LoginPresenterImplementation.swift */; };
+		683A1B7823ACFFBD0052C412 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683A1B7723ACFFBD0052C412 /* HomePresenter.swift */; };
 		68C9FBF92382F1BB00DA84D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C9FBF82382F1BB00DA84D1 /* AppDelegate.swift */; };
 		68C9FBFB2382F1BB00DA84D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C9FBFA2382F1BB00DA84D1 /* SceneDelegate.swift */; };
 		68C9FC002382F1BB00DA84D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C9FBFE2382F1BB00DA84D1 /* Main.storyboard */; };
@@ -58,6 +60,8 @@
 		680C62372382F80900ABC610 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		680C62382382F80900ABC610 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		680C62392382F80900ABC610 /* HotelRoomViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelRoomViewCell.swift; sourceTree = "<group>"; };
+		68257A7D23ACEAC7002DAB5D /* LoginPresenterImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterImplementation.swift; sourceTree = "<group>"; };
+		683A1B7723ACFFBD0052C412 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		68C9FBF52382F1BB00DA84D1 /* Roomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C9FBF82382F1BB00DA84D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C9FBFA2382F1BB00DA84D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,8 +120,10 @@
 			children = (
 				680C62362382F80900ABC610 /* LandingPageViewController.swift */,
 				680C62382382F80900ABC610 /* LoginViewController.swift */,
+				68257A7D23ACEAC7002DAB5D /* LoginPresenterImplementation.swift */,
 				680C62352382F80900ABC610 /* SignUpViewController.swift */,
 				680C62372382F80900ABC610 /* HomeViewController.swift */,
+				683A1B7723ACFFBD0052C412 /* HomePresenter.swift */,
 				680C62392382F80900ABC610 /* HotelRoomViewCell.swift */,
 			);
 			path = Controller;
@@ -488,11 +494,13 @@
 				680C623E2382F80900ABC610 /* HotelRoomViewCell.swift in Sources */,
 				68C9FC3F2382F2CB00DA84D1 /* NetworkRouter.swift in Sources */,
 				68C9FBF92382F1BB00DA84D1 /* AppDelegate.swift in Sources */,
+				683A1B7823ACFFBD0052C412 /* HomePresenter.swift in Sources */,
 				68C9FC402382F2CB00DA84D1 /* NewtworkManger.swift in Sources */,
 				680C623A2382F80900ABC610 /* SignUpViewController.swift in Sources */,
 				680C62312382F79A00ABC610 /* UnderlineTextField.swift in Sources */,
 				68C9FC462382F2E000DA84D1 /* Constants.swift in Sources */,
 				68C9FBFB2382F1BB00DA84D1 /* SceneDelegate.swift in Sources */,
+				68257A7E23ACEAC7002DAB5D /* LoginPresenterImplementation.swift in Sources */,
 				68C9FC432382F2D600DA84D1 /* RoomsModel.swift in Sources */,
 				680C62332382F7C600ABC610 /* RoundedButton.swift in Sources */,
 				680C623B2382F80900ABC610 /* LandingPageViewController.swift in Sources */,
